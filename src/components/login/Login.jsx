@@ -8,57 +8,57 @@ function Login({ setIsLoggedIn }) {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  // const handleLogin = async (event) => {
-  //   event.preventDefault();
+  const handleLogin = async (event) => {
+    event.preventDefault();
 
-  //   setErrorMessage('');
+    setErrorMessage('');
 
-  //   // Validation
-  //   if (username.trim() === '') {
-  //     setErrorMessage('Username is required.');
-  //     return;
-  //   }
+    // Validation
+    if (username.trim() === '') {
+      setErrorMessage('Username is required.');
+      return;
+    }
 
-  //   if (password.trim() === '') {
-  //     setErrorMessage('Password is required.');
-  //     return;
-  //   }
+    if (password.trim() === '') {
+      setErrorMessage('Password is required.');
+      return;
+    }
 
-  //   if (password.length < 6) {
-  //     setErrorMessage('Password must be at least 6 characters long.');
-  //     return;
-  //   }
+    if (password.length < 6) {
+      setErrorMessage('Password must be at least 6 characters long.');
+      return;
+    }
 
-  //   const passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Z][A-Za-z\d!@#$%^&*(),.?":{}|<>]{5,}$/;
+    const passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Z][A-Za-z\d!@#$%^&*(),.?":{}|<>]{5,}$/;
 
-  //   if (!passwordRegex.test(password)) {
-  //     setErrorMessage('Password is wrong');
-  //     return;
-  //   }
+    if (!passwordRegex.test(password)) {
+      setErrorMessage('Password is wrong');
+      return;
+    }
 
-  //   try {
-  //     const response = await fetch('http://localhost/project/login.php', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ username, password }),
-  //     });
+    try {
+      const response = await fetch('http://localhost/project/login.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-  //     const data = await response.json();
+      const data = await response.json();
 
-  //     if (data.success) {
-  //       setIsLoggedIn(true);
-  //       console.log("Login successful");
-  //       navigate('/home');
-  //     } else {
-  //       setErrorMessage(data.message || 'Login failed.');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //     setErrorMessage('An error occurred during login.');
-  //   }
-  // };
+      if (data.success) {
+        setIsLoggedIn(true);
+        console.log("Login successful");
+        navigate('/home');
+      } else {
+        setErrorMessage(data.message || 'Login failed.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setErrorMessage('An error occurred during login.');
+    }
+  };
 
   return (
     <div className="login-container">
