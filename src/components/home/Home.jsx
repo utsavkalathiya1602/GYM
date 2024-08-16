@@ -63,7 +63,7 @@ function Home() {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src="img/c-1.avif" className="d-block w-100 vh-100" alt="..." />
+            <img src="./img/c-1.avif" className="d-block w-100 vh-100" alt="..." />
             <div className="carousel-caption d-none d-md-block">
               <h5>Welcome To our `GYM`</h5>
               <p>“The real workout starts when you want to stop.” – Ronnie Coleman</p>
